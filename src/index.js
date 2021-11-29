@@ -1,5 +1,5 @@
-import Sudoku from "/src/game.js";
-import { createHiDPICanvas, rectCollisionDetection } from "/src/helper.js";
+import Sudoku from "src/game.js";
+import { createHiDPICanvas, rectCollisionDetection } from "src/helper.js";
 
 "use strict";
 
