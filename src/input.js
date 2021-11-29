@@ -34,8 +34,10 @@ export default class InputHandler {
       });
   
       document.addEventListener("click", e => {
-        game.markClick(e.clientX, e.clientY);
+        game.selectUnitClick(e.clientX, e.clientY);
       });
+
+      
     }
   }
   

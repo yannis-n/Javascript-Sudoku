@@ -57,7 +57,7 @@ export default class Sudoku {
 
   }
 
-  markClick(clientX, clientY){
+  selectUnitClick(clientX, clientY){
     let clicked = {
       x:clientX,
       y:clientY
