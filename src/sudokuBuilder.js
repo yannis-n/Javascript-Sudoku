@@ -1,4 +1,4 @@
-import Unit from "src/unit.js";
+import Unit from "../src/unit.js";
 
 export function createBoard(game, puzzleString, unitMeasurement){
         const puzzleArray = Array.from(puzzleString)

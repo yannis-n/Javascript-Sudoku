@@ -1,7 +1,7 @@
-import InputHandler from "src/input.js";
-import { createBoard, drawBoard } from "src/sudokuBuilder.js";
-import { createMenu } from "src/helperScreens.js";
-import { createHiDPICanvas, circleAndMouseCollissionDetection } from "src/helper.js";
+import InputHandler from "../src/input.js";
+import { createBoard, drawBoard } from "../src/sudokuBuilder.js";
+import { createMenu } from "../src/helperScreens.js";
+import { createHiDPICanvas, circleAndMouseCollissionDetection } from "../src/helper.js";
 
 
 const GAMESTATE = {

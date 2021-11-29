@@ -1,4 +1,4 @@
-import Menu from "src/menu.js";
+import Menu from "../src/menu.js";
 
 export function createMenu(game, gameWidth, gameHeight){
 

@@ -1,4 +1,4 @@
-import { circleAndMouseCollissionDetection } from "src/helper.js";
+import { circleAndMouseCollissionDetection } from "../src/helper.js";
 
 export default class Menu {
     constructor(game, gameWidth, gameHeight) {
