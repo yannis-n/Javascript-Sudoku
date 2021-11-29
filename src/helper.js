@@ -1,4 +1,4 @@
-export function collides(rects, x, y) {
+export function rectCollisionDetection(rects, x, y) {
     var isCollision = false;
     for (var i = 0, len = rects.length; i < len; i++) {
         var left = rects[i].x, right = rects[i].x+rects[i].w;
@@ -11,6 +11,11 @@ export function collides(rects, x, y) {
         }
     }
     return isCollision;
+}
+
+export function circleAndMouseCollissionDetection(gameWidth, gameHeight, buttonRadius, mouse) {
+
+    return gameWidth/2-buttonRadius < mouse.x && mouse.x < gameWidth/2+buttonRadius && gameHeight/2-buttonRadius < mouse.y  && mouse.y < gameHeight/2+buttonRadius;
 }
 
 var PIXEL_RATIO = (function () {

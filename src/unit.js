@@ -79,11 +79,15 @@ export default class Unit {
       this.drawUnit(ctx, row, col, path[parseInt(i)%4], path[(parseInt(i) + 1)%4] )
 
     }
-
     // add a number if it exists
     if (this.game.board[row][col] != '.'){
+      if(this.game.boardExample[row][col] == '.'){
+        ctx.fillStyle = "#0072e3";
+      }else{
+        ctx.fillStyle = "#000";
+
+      }
       ctx.font = this.game.unitMeasurement.unitWidth / 2 + "px Source Sans Pro,sans-serif";
-      ctx.fillStyle = "#000";
       ctx.textAlign = "center";
       ctx.textBaseline = 'middle';
 

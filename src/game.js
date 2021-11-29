@@ -1,6 +1,7 @@
 import InputHandler from "/src/input.js";
 import { createBoard, drawBoard } from "/src/sudokuBuilder.js";
-
+import { createMenu } from "/src/helperScreens.js";
+import { createHiDPICanvas, circleAndMouseCollissionDetection } from "/src/helper.js";
 
 
 const GAMESTATE = {
@@ -8,7 +9,8 @@ const GAMESTATE = {
   RUNNING: 1,
   MENU: 2,
   GAMEOVER: 3,
-  NEWLEVEL: 4
+  NEWLEVEL: 4,
+  LOADING: 5
 };
 
 const unitMeasurement = {
@@ -28,11 +30,17 @@ export default class Sudoku {
       unitWidth : gameWidth / 9,
       unitHeight : gameWidth / 9
     };
+    
+    this.mouse = {
+      x:0,
+      y:0,
+    }
 
     this.gamestate = GAMESTATE.MENU;
     this.difficulty = difficulty
     this.board = createBoard(this, PUZZLE, this.unitMeasurement)
     this.boardExample = this.board.map(inner => inner.slice())
+    this.menu = createMenu(this, gameWidth, gameHeight)
 
     this.units = drawBoard(this, this.unitMeasurement)
     this.selectedUnit = {
@@ -40,7 +48,8 @@ export default class Sudoku {
       col:0
     }
 
-    new InputHandler(this);
+    this.InputHandler = new InputHandler(this, GAMESTATE);
+    this.updateGameState(GAMESTATE.MENU)
 
   }
 
@@ -52,9 +61,25 @@ export default class Sudoku {
   }
 
   draw(ctx) {
-    [...this.units].forEach((object) => object.drawSelectedColors(ctx));
-    [...this.units].forEach((object) => object.draw(ctx));
+    if (this.gamestate === GAMESTATE.RUNNING) {
+      [...this.units].forEach((object) => object.drawSelectedColors(ctx));
+      [...this.units].forEach((object) => object.draw(ctx));
+    }
 
+    if (this.gamestate === GAMESTATE.MENU) {
+      this.menu.draw(ctx)
+    }
+  }
+
+  updateGameState(state){
+    this.gamestate = state;
+    this.InputHandler.init()
+  }
+
+  checkPlayButtonClick(clientX, clientY){
+    if (circleAndMouseCollissionDetection(this.gameWidth, this.gameHeight, this.menu.buttonRadius, this.mouse)){
+      this.updateGameState(GAMESTATE.RUNNING)
+    }
   }
 
   selectUnitClick(clientX, clientY){
@@ -68,6 +93,8 @@ export default class Sudoku {
     let row = Math.floor((clicked.y - (this.gameHeight / 2 - (this.unitMeasurement.unitHeight / 2) * 9)) / this.unitMeasurement.unitHeight - 0.1)
 
     if (0 <= row && row <= 8 && 0 <= col && col <= 8){
+      console.log('selectUnitClick')
+
       this.selectedUnit = {
         row:row,
         col:col
@@ -78,7 +105,6 @@ export default class Sudoku {
 
   fillNumber(number){
     let selectedUnit = this.selectedUnit
-    console.log(this.boardExample)
     if (this.boardExample[selectedUnit.row][selectedUnit.col] == '.'){
       this.board[selectedUnit.row][selectedUnit.col] = String(number)
 
