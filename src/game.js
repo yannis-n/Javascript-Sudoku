@@ -50,6 +50,7 @@ export default class Sudoku {
 
     this.InputHandler = new InputHandler(this, GAMESTATE);
     this.updateGameState(GAMESTATE.MENU)
+    this.InputHandler.init()
 
   }
 
@@ -73,7 +74,6 @@ export default class Sudoku {
 
   updateGameState(state){
     this.gamestate = state;
-    this.InputHandler.init()
   }
 
   checkPlayButtonClick(clientX, clientY){

@@ -22,7 +22,7 @@ let lastTime = 0;
 function gameLoop(timestamp) {
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
-  
+    console.log(deltaTime)
     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   
     sudoku.draw(ctx)

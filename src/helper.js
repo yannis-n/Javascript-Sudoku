@@ -13,9 +13,9 @@ export function rectCollisionDetection(rects, x, y) {
     return isCollision;
 }
 
-export function circleAndMouseCollissionDetection(gameWidth, gameHeight, buttonRadius, mouse) {
+export function circleAndMouseCollissionDetection(x, y, radius, mouse) {
 
-    return gameWidth/2-buttonRadius < mouse.x && mouse.x < gameWidth/2+buttonRadius && gameHeight/2-buttonRadius < mouse.y  && mouse.y < gameHeight/2+buttonRadius;
+    return x-radius < mouse.x && mouse.x < x+radius && y-radius < mouse.y  && mouse.y < y+radius;
 }
 
 var PIXEL_RATIO = (function () {
