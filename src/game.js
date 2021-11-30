@@ -77,7 +77,7 @@ export default class Sudoku {
   }
 
   checkPlayButtonClick(clientX, clientY){
-    if (circleAndMouseCollissionDetection(this.gameWidth, this.gameHeight, this.menu.buttonRadius, this.mouse)){
+    if (circleAndMouseCollissionDetection(this.gameWidth/2, this.gameHeight/2, this.menu.buttonRadius, this.mouse)){
       this.updateGameState(GAMESTATE.RUNNING)
     }
   }
