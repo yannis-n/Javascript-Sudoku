@@ -23,7 +23,8 @@ const PUZZLESOLUSTION = '1357629849463812577284596136945178328129367453578241964
 
 
 export default class Sudoku {
-  constructor(gameWidth, gameHeight, difficulty) {
+  constructor(gameWidth, gameHeight, difficulty, canvas) {
+    this.canvas = canvas
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.unitMeasurement = {
@@ -89,8 +90,8 @@ export default class Sudoku {
     }
     const centeredX = this.gameWidth / 2 - (this.unitMeasurement.unitWidth / 2) * 9;
 
-    let col = Math.floor((clicked.x - (this.gameWidth / 2 - (this.unitMeasurement.unitWidth / 2) * 9)) / this.unitMeasurement.unitWidth - 0.1)
-    let row = Math.floor((clicked.y - (this.gameHeight / 2 - (this.unitMeasurement.unitHeight / 2) * 9)) / this.unitMeasurement.unitHeight - 0.1)
+    let col = Math.floor((clicked.x - (this.gameWidth / 2 - (this.unitMeasurement.unitWidth / 2) * 9)) / this.unitMeasurement.unitWidth)
+    let row = Math.floor((clicked.y - (this.gameHeight / 2 - (this.unitMeasurement.unitHeight / 2) * 9)) / this.unitMeasurement.unitHeight)
 
     if (0 <= row && row <= 8 && 0 <= col && col <= 8){
       console.log('selectUnitClick')

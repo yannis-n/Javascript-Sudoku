@@ -15,7 +15,7 @@ const GAME_WIDTH = rect.width;
 const GAME_HEIGHT = rect.height;
 const difficulty = 1;
 
-let sudoku = new Sudoku(GAME_WIDTH, GAME_HEIGHT, difficulty);
+let sudoku = new Sudoku(GAME_WIDTH, GAME_HEIGHT, difficulty, canvas);
 
 let lastTime = 0;
 

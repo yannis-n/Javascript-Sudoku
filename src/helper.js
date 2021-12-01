@@ -41,3 +41,10 @@ export function createHiDPICanvas (w, h, ratio) {
     can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
     return can;
   }
+
+export function getCursorPosition(canvas, event) {
+    const rect = canvas.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    return {x:x, y:y}
+}
