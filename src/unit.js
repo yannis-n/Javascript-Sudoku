@@ -17,8 +17,17 @@ export default class Unit {
     ] 
   }
 
-  update() {
 
+  updateSize(position, unitMeasurement) {
+    this.position = position;
+    this.width = unitMeasurement.unitWidth;
+    this.height = unitMeasurement.unitHeight;
+    this.path = [
+      [this.position.x, this.position.y],
+      [this.position.x + this.width, this.position.y],
+      [this.position.x + this.width, this.position.y + this.height],
+      [this.position.x, this.position.y + this.height]
+    ]
   }
 
   drawUnit(ctx, row, col, start, end ){
