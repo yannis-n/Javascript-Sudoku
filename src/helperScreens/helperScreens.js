@@ -31,7 +31,6 @@ export function updateGameStateForHelperScreens(game, GAMESTATE){
         if (game.helperScreens.loadingBar.loaded()){
           game.helperScreens.loadingBar.hide()
         //       if (game.helperScreens.loadingBar.hidden()){
-                console.log('teeet')
                 game.updateGameState(GAMESTATE.MENU)
                 
         //       }     
@@ -121,6 +120,15 @@ export function updateGameStateForHelperScreens(game, GAMESTATE){
                 }else{
                   game.updateGameState(GAMESTATE.LEVELDONE)
 
+                }
+        }
+
+        // this is used to load the rendered for the 3d objects
+        if (game.gamestate === GAMESTATE.RUNNING) {
+                if (game.renderer){
+                        if (game.renderIsHidden()){
+                                document.getElementById('ThreedObjectsCanvas').style.display = 'flex'
+                        }
                 }
         }
       
